@@ -9,6 +9,8 @@ RUN apt-get update
 
 # install dependencies
 RUN pip install --upgrade pip
+ENV PIP_ROOT_USER_ACTION=ignore
+
 COPY ./requirements.txt /app/
 RUN pip install -r requirements.txt
 
