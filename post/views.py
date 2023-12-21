@@ -29,8 +29,6 @@ class RegisterView(View):
 def index(request):
     # context = {}
     posts = Post.objects.all().order_by('-created_at')
-
-    print(posts)
     return render(request, "post/index.html", context={'posts': posts})
 
 
@@ -39,7 +37,7 @@ def detail(request, id):
         post = Post.objects.get(id=id)
         return render(request, "post/post_detail.html", context={'post': post})
     except:
-        return HttpResponse(status=405)
+        return HttpResponse("Page not found", status=404)
 
 
 @login_required()
