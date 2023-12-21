@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block content %}
+
+<section>
+  <div class="container">
+    <div class="row text-center">
+      <h2 class="my-2">{{post.title}}</h2>
+      <p class="text-gray-500 text-sm my-3">
+        <i class="far fa-clock mr-2"></i> {{post.created_at}}
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-xl-8 col-lg-10 mx-auto">
+        <div class="text-content">{{post.content|safe}}</div>
+      </div>
+    </div>
+    {% if request.user == post.author %}
+    <div>
+      <a href="{% url 'edit_post' post.id %}" class="btn btn-primary">Edit</a>
+      <a href="{% url 'delete_post' post.id %}" class="btn btn-danger"
+        >Delete</a
+      >
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container mt-5">
+  <form method="POST" class="mt-5 pt-5 mb-5 pb-5" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-12">
+        <label>Enter blog title</label>
+        <input
+          type="text"
+          value=""
+          class="form-control"
+          placeholder="Enter title"
+          name="title"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label"
+          >Enter Blog Content</label
+        >
+        <textarea
+          class="form-control"
+          id="exampleFormControlTextarea1"
+          rows="3"
+          name="content"
+        ></textarea>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-4">Create Post</button>
+  </form>
+</div>
+
+{% endblock %}
